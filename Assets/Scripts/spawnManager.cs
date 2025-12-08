@@ -2,13 +2,12 @@ using UnityEngine;
 
 public class spawnManager : MonoBehaviour
 {
-    private GameObject[] Enemys;
+    [SerializeField] private GameObject[] Enemys;
     private GameObject[] points;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Enemys = GameObject.FindGameObjectsWithTag("Enemys");
         points = GameObject.FindGameObjectsWithTag("Points");
         spawn();
     }

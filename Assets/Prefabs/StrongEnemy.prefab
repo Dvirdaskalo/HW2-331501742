@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4124376765742351154, guid: 8d71b7881b55f15469032f7a9b68679f, type: 3}
       propertyPath: _speed
-      value: 50
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4124376765742351154, guid: 8d71b7881b55f15469032f7a9b68679f, type: 3}
       propertyPath: bounus_damage
@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7834575548367064823, guid: 8d71b7881b55f15469032f7a9b68679f, type: 3}
       propertyPath: m_Name
-      value: FastEnemy
+      value: StrongEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 8935103800017761006, guid: 8d71b7881b55f15469032f7a9b68679f, type: 3}
       propertyPath: m_Sprite

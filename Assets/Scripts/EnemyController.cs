@@ -19,6 +19,7 @@ public class EnemyController : MonoBehaviour, IHpManager, IAnimated
     private Vector3 orginalScale;
     private Coroutine Attack = null;
     string tagspawner = "spawner";
+    private bool animation_done = false;
     
     public void Died()
     {
@@ -54,11 +55,23 @@ public class EnemyController : MonoBehaviour, IHpManager, IAnimated
             }
             if (!((IAnimated)this).IsAnimationFinised(animator, "enemy blink"))
             {
+                animation_done = true;
                 return;
             }
+            if (animation_done) {
+                PlayerMovement playerMovement = _player.GetComponent<PlayerMovement>();
+                if (playerMovement != null)
+                {
+                    playerMovement.AddScore(Damage);
+                }
+                _spawner.spawn();
+                Destroy(gameObject);
+            }
+        }
 
-            _spawner.spawn();
-            Destroy(gameObject);
+        if (isDead)
+        {
+            return;
         }
         Vector3 direction = _player.transform.position - transform.position;
         if (direction.magnitude >= dist)
