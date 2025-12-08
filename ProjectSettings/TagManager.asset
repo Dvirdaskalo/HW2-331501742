@@ -7,6 +7,8 @@ TagManager:
   - Collectable
   - Enemy
   - PunchCollision
+  - spawner
+  - Points
   layers:
   - Default
   - TransparentFX

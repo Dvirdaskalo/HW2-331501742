@@ -1,19 +1,31 @@
 using System;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IHpManager, IAnimated
 {
+    public int hp { get; set; } = 100;
+    public int Damage { get; set; } = 50;
+    
+    public void Died()
+    { 
+        GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
+        foreach (var script in enemy.GetComponents<MonoBehaviour>())
+        {
+            script.enabled = false;
+        }
+        Destroy(gameObject);
+    }
+    
     [SerializeField] private float _speed = 25f;
     Vector3 direction = Vector3.zero;
-    [SerializeField] private GameObject diamond;
     
     int score = 0;
 
     private Vector3 orginalScale;
-
+    
     private Rigidbody2D rb;
     private Animator animator;
-
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,13 +39,12 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //WASDControlls();
-        
+        this.transform.rotation = Quaternion.Euler(0, 0, 0);
         if (Input.GetMouseButtonDown(0))
             animator.SetTrigger("Attack");
 
-        if (!IsAnimationFinised(animator, "PlayerPunch"))
+        if (!((IAnimated)this).IsAnimationFinised(animator, "PlayerPunch"))
         {
-            Debug.Log("is attacking");
             return;
         }
 
@@ -64,17 +75,7 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    public static bool IsAnimationFinised(Animator animator, string AnimationName)
-    {
-        AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
-        
-        if (!info.IsName(AnimationName)) return true;
-        
-        if (info.normalizedTime >= 1)
-            return true;
-        
-        return false;
-    }
+    
 
     private void FixedUpdate()
     {
@@ -111,10 +112,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log($"$On trigger enter = {other.name}");
+        if (other.CompareTag("PunchCollision"))
+        {
+            EnemyController othercontroller = other.GetComponentInParent<EnemyController>();
+            if ((othercontroller != null) && !(othercontroller.isDead))
+            {
+                ((IHpManager)this).lose_hp(othercontroller.Damage, tag);
+            }
+        }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log($"$On trigger exit = {other.name}");
+        
     }
 }
