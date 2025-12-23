@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject HUD;
     public GameObject Player;
-    
+    [SerializeField] private GameObject deathscreen;
     [SerializeField]
     private GameObject MainMenu;
     public static GameManager Instance { get; private set; }
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         PauseGame();
 
@@ -49,8 +49,17 @@ public class GameManager : MonoBehaviour
         MainMenu.SetActive(true);
         HUD.SetActive(false);
     }
-
-
+    public void died()
+    {
+        Time.timeScale = 0;
+        HUD.SetActive(false);
+        deathscreen.SetActive(true);
+    }
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+    }
 
     // Update is called once per frame
     void Update()

@@ -1,8 +1,9 @@
 using System;
 using UnityEngine;
-
+using TMPro;
 public class PlayerMovement : MonoBehaviour, IHpManager, IAnimated
 {
+    [SerializeField] TMP_Text scoreText;
     public int hp { get; set; } = 100;
     public int Damage { get; set; } = 50;
     
@@ -13,7 +14,11 @@ public class PlayerMovement : MonoBehaviour, IHpManager, IAnimated
         {
             script.enabled = false;
         }
+        GameManager.Instance.GetComponent<GameManager>().died();
+        Time.timeScale = 0;
+        scoreText.text= "Your final score is: " + score.ToString()+" even a child could do better!";
         Destroy(gameObject);
+        
     }
     
     [SerializeField] private float _speed = 25f;
@@ -31,7 +36,6 @@ public class PlayerMovement : MonoBehaviour, IHpManager, IAnimated
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        
         orginalScale =  transform.localScale;
     }
 
