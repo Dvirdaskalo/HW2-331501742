@@ -1,14 +1,15 @@
 using UnityEditor;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using System.Collections;
 public class GameManager : MonoBehaviour
 {
     public GameObject HUD;
     public GameObject Player;
-    [SerializeField] private GameObject deathscreen;
+    [SerializeField] public GameObject deathscreen;
     [SerializeField]
-    private GameObject MainMenu;
-    public static GameManager Instance { get; private set; }
+    public GameObject MainMenu;
+    public static GameManager Instance { get; set; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,7 +22,7 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         
-        //DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);
 
         PauseGame();
 
@@ -58,9 +59,23 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         Time.timeScale = 1f;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        StartCoroutine(RestartCoroutine());
     }
+    public IEnumerator RestartCoroutine()
+    {
+        // Start loading the scene asynchronously
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
 
+        // Wait until the scene is fully loaded
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        // Scene is loaded, now you can safely deactivate the HUD
+        if (MainMenu != null)
+            MainMenu.SetActive(false);
+    }
     // Update is called once per frame
     void Update()
     {

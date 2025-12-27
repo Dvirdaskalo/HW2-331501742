@@ -125,8 +125,10 @@ public class PlayerMovement : MonoBehaviour, IHpManager, IAnimated
             }
         }
     }
-    private void OnTriggerExit2D(Collider2D other)
+
+    private void Awake()
     {
-        
+        if (GameManager.Instance != null)
+            GameManager.Instance.Player = gameObject;
     }
 }

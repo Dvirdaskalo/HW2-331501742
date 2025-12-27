@@ -11,7 +11,11 @@ public class HUD : MonoBehaviour
     {
         UpdateScore(0);
     }
-    
+    void Awake()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.HUD = gameObject;
+    }
     public void UpdateScore(int score)
     {
         ScoreText.text = $"Score: {score}";
