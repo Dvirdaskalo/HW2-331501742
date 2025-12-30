@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 16066946}
   - component: {fileID: 16066949}
   m_Layer: 5
-  m_Name: Quit
+  m_Name: Quit btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -305,7 +305,6 @@ GameObject:
   m_Component:
   - component: {fileID: 183573337}
   - component: {fileID: 183573338}
-  - component: {fileID: 183573339}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -344,31 +343,6 @@ MonoBehaviour:
   Player: {fileID: 1480301314}
   deathscreen: {fileID: 1322824293}
   MainMenu: {fileID: 1775515970}
---- !u!114 &183573339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 183573336}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e95e73dad022f12489be1e1940fbedb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 2939173962598404030, guid: 1ef71e4ee8c31214fb16cdfb5979d98e, type: 3}
-  - {fileID: 4426365928595703730, guid: 7a425a892fc61bb4b8008692bb6c4163, type: 3}
-  firstDelay: 2
-  burstRate: 5
-  enemiesRate: 1
-  enemiesPerBurst: 5
-  SpawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &375420123
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,7 +353,7 @@ GameObject:
   m_Component:
   - component: {fileID: 375420124}
   m_Layer: 0
-  m_Name: all points
+  m_Name: spawn  points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -785,7 +759,7 @@ GameObject:
   - component: {fileID: 619927196}
   - component: {fileID: 619927198}
   m_Layer: 0
-  m_Name: tileset_0
+  m_Name: background2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -954,7 +928,7 @@ GameObject:
   - component: {fileID: 858669923}
   - component: {fileID: 858669922}
   m_Layer: 0
-  m_Name: Square (3)
+  m_Name: right border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1114,7 +1088,7 @@ GameObject:
   - component: {fileID: 1030918300}
   - component: {fileID: 1030918299}
   m_Layer: 0
-  m_Name: tileset_2
+  m_Name: background3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1203,7 +1177,7 @@ GameObject:
   - component: {fileID: 1034972379}
   - component: {fileID: 1034972378}
   m_Layer: 0
-  m_Name: Square (1)
+  m_Name: top border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1369,7 +1343,7 @@ GameObject:
   - component: {fileID: 1233464175}
   - component: {fileID: 1233464174}
   m_Layer: 5
-  m_Name: score
+  m_Name: death score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1506,7 +1480,7 @@ GameObject:
   - component: {fileID: 1292356042}
   - component: {fileID: 1292356044}
   m_Layer: 0
-  m_Name: tileset_13
+  m_Name: background1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1607,7 +1581,7 @@ GameObject:
   - component: {fileID: 1302842193}
   - component: {fileID: 1302842192}
   m_Layer: 0
-  m_Name: Square
+  m_Name: bottom border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1887,7 +1861,7 @@ GameObject:
   - component: {fileID: 1368398966}
   - component: {fileID: 1368398965}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: black background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1960,7 +1934,7 @@ GameObject:
   - component: {fileID: 1381823201}
   - component: {fileID: 1381823200}
   m_Layer: 0
-  m_Name: Square (2)
+  m_Name: left border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2143,6 +2117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1233464174}
+  HUD: {fileID: 1105709229}
   _speed: 1.5
 --- !u!212 &1480301316
 SpriteRenderer:
@@ -2636,7 +2611,7 @@ GameObject:
   - component: {fileID: 1601209677}
   - component: {fileID: 1601209676}
   m_Layer: 0
-  m_Name: tileset_14
+  m_Name: background4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2772,6 +2747,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 569433716161529817, guid: 6871c4b5e23b4df44ac345ff53babc54, type: 3}
+      propertyPath: mainMenu
+      value: 
+      objectReference: {fileID: 1775515970}
+    - target: {fileID: 569433716161529817, guid: 6871c4b5e23b4df44ac345ff53babc54, type: 3}
+      propertyPath: deathscreen
+      value: 
+      objectReference: {fileID: 1322824293}
+    - target: {fileID: 569433716161529817, guid: 6871c4b5e23b4df44ac345ff53babc54, type: 3}
+      propertyPath: FinalScoreText
+      value: 
+      objectReference: {fileID: 1233464174}
     - target: {fileID: 4025918959882255887, guid: 6871c4b5e23b4df44ac345ff53babc54, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2901,6 +2888,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 183573338}
+    - target: {fileID: 798396460817240645, guid: 995654a461a88754c96094c053d15840, type: 3}
+      propertyPath: m_Name
+      value: black background
+      objectReference: {fileID: 0}
     - target: {fileID: 1764097212178326190, guid: 995654a461a88754c96094c053d15840, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3019,7 +3010,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5575901675888830784, guid: 995654a461a88754c96094c053d15840, type: 3}
       propertyPath: m_Name
-      value: PauseMenu
+      value: mainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 5575901675888830784, guid: 995654a461a88754c96094c053d15840, type: 3}
       propertyPath: m_IsActive

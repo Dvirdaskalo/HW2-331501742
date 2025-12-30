@@ -50,12 +50,6 @@ public class GameManager : MonoBehaviour
         MainMenu.SetActive(true);
         HUD.SetActive(false);
     }
-    public void died()
-    {
-        Time.timeScale = 0;
-        HUD.SetActive(false);
-        deathscreen.SetActive(true);
-    }
     public void RestartGame()
     {
         Time.timeScale = 1f;

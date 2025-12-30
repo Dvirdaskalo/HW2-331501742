@@ -1,6 +1,6 @@
 using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
-public class sc1 : MonoBehaviour
+public class scaleWithScreen2 : MonoBehaviour
 {
    
 

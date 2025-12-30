@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class deat : MonoBehaviour
+public class rassighnDeathScreen : MonoBehaviour
 {
     private void Awake()
     {

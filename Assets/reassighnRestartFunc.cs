@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class restartbt : MonoBehaviour
+public class reassighnRestartFunc : MonoBehaviour
 {
     private void Awake()
     {

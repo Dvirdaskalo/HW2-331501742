@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour, IHpManager, IAnimated
     [SerializeField] TMP_Text scoreText;
     public int hp { get; set; } = 100;
     public int Damage { get; set; } = 50;
+    [SerializeField] private GameObject HUD;
     
     public void Died()
     { 
@@ -14,11 +15,9 @@ public class PlayerMovement : MonoBehaviour, IHpManager, IAnimated
         {
             script.enabled = false;
         }
-        GameManager.Instance.GetComponent<GameManager>().died();
-        Time.timeScale = 0;
-        scoreText.text= "Your final score is: " + score.ToString()+" even a child could do better!";
+
+        HUD.GetComponent<HUD>().died(score);
         Destroy(gameObject);
-        
     }
     
     [SerializeField] private float _speed = 25f;

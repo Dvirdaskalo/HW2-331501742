@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class mainmenu : MonoBehaviour
+public class reassighnMainmenu : MonoBehaviour
 {
     private void Awake()
     {

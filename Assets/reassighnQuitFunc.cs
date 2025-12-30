@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class quits : MonoBehaviour
+public class reassighnQuitFunc : MonoBehaviour
 {
     private void Awake()
     {
